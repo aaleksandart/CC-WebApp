@@ -1,7 +1,33 @@
+using Auth0.AspNetCore.Authentication;
+using CC.Data.Context;
+using CC.Data.Repositories;
+using CC.Data.Repositories.Interfaces;
+using CC.Data.Services;
+using CC.Data.Services.Interfaces;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
+using System.Security.Claims;
+
 var builder = WebApplication.CreateBuilder(args);
+var services = builder.Services;
+var config = builder.Configuration;
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+services.AddControllersWithViews();
+services.AddDbContext<SqlContext>(context => context.UseSqlServer(config.GetConnectionString("SQL")));
+services.AddScoped<IUserService, UserService>();
+services.AddScoped<IToolService, ToolService>();
+services.AddScoped<IUserRepository, UserRepository>();
+services.AddScoped<IToolsRepository, ToolsRepository>();
+
+// Add Auth0 Authentication
+services.AddAuth0WebAppAuthentication(options =>
+{
+    options.Domain = config["Auth0:Domain"] ?? string.Empty;
+    options.ClientId = config["Auth0:ClientId"] ?? string.Empty;
+    options.Scope = "openid profile email";
+});
 
 var app = builder.Build();
 
@@ -18,6 +44,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

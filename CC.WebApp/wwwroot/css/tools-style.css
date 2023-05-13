@@ -1,0 +1,61 @@
+﻿/*TOOLS PAGE*/
+.tool-details-btn {
+    width: 100%!important;
+    height: 45px!important;
+    display: grid!important;
+    place-items: center!important;
+    justify-content: center;
+    border-radius: 0.5rem!important;
+    border: none!important;
+    background-color: #001730!important;
+    color: white!important;
+    margin-top: 2rem!important;
+    font-weight: 500!important;
+}
+
+/*TOOL DETAILS PAGE*/
+.tool-details-page {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5rem;
+    margin-bottom: 7rem;
+}
+
+.card-rent-btn-container {
+    width: 100%;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    margin-top: 2rem!important;
+}
+
+.tool-details-img {
+    border: 1px solid black;
+}
+
+@media(max-width: 767px) {
+    .desktop-card-container {
+        display: none;
+    }
+
+    .mobile-card-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media(min-width: 768px) {
+    .desktop-card-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 4rem;
+    }
+
+    .mobile-card-container {
+        display: none;
+    }
+}

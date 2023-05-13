@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "CC - Tool details";
+}
+
+<div class="tool-details-page">
+
+    @*Mobile*@
+    <div class="mobile-card-container" style="width: 80%;">
+        <div class="card shadow-lg mobile-card" style="width: 80%;">
+            <img class="card-image-top" src="~/images/tool.jpg" alt="toolpicture"/>
+            <div class="card-body shadow-lg">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <div class="card-rent-btn-container">
+                    @Html.ActionLink("Details", "ToolDetails", "Tools", null, new { @class="btn tool-details-btn shadow"})
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*Ipad or desktop*@
+    <div class="desktop-card-container">
+        <div class="card shadow-lg" style="max-width: 80%;">
+            <div class="row g-0 p-3">
+            <div class="col-md-4">
+                    <img class="img-fluid rounded-start tool-details-img" src="~/images/tool.jpg" alt="toolpicture" />
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                        <p class="card-text">
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br />Quibusdam molestiae hic ad dolores illo, assumenda maxime error et explicabo! <br />Voluptates ducimus quis incidunt et assumenda accusantium quo dolorum,<br/> nam voluptate!
+                            Lorem ipsum dolo        r sit amet consectetur adipisicing elit. <br /> Quod explicabo, deleniti ex aut ea deserunt perspiciatis<br /> itaque accusantium iusto eligendi ips a laboriosam harum error officia<br/> voluptatum quae veniam. Itaque, voluptat
+                        ibus.</p>
+                </div>
+            </div>
+            <div class="card-rent-btn-container">
+                @Html.ActionLink("Details", "ToolDetails", "Tools", null, new { @class="btn tool-details-btn shadow"})
+            </div>
+        </div>
+    </div>
+</div>
+</div>

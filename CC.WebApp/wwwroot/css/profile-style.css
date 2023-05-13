@@ -1,0 +1,15 @@
+﻿/*PROFILE PAGE*/
+.list-group a {
+    color: #141414!important;
+}
+.list-group a:hover {
+    color: #141414 !important;
+}
+
+.rental-history-group {
+    margin-bottom: 10rem!important;
+}
+
+.welcome-part {
+    margin-top: 3rem;
+}

@@ -1,0 +1,92 @@
+﻿/*ABOUT US PAGE*/
+.about-us-area {
+    display: flex;
+    margin-top: 10rem;
+    border: 2px solid black;
+    border-radius: 2rem;
+    padding: 1rem;
+}
+
+.employee-header {
+    width: 100%;
+    text-align: center;
+    margin-top: 7rem;
+    margin-bottom: 3rem;
+    font-weight: 800;
+    font-size: 32px;
+}
+
+.about-us-text {
+    width: 50%;
+    padding: 1rem;
+    display: grid;
+    place-items: center;
+}
+
+    .about-us-text p {
+        text-align: center;
+        width: 85%;
+        max-width: 620px;
+    }
+
+.about-us-header {
+    width: 50%;
+    text-align: center;
+    padding: 1rem;
+    display: grid;
+    place-items: center;
+    font-weight: 800;
+    font-size: 40px;
+    color: #ffbd07;
+}
+
+.employees-area {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    place-items: center;
+    margin-top: 2rem;
+    grid-row-gap: 3rem;
+    margin-bottom: 7rem;
+}
+
+.img-container {
+    width: 200px;
+    height: 250px;
+}
+
+    .img-container img {
+        max-width: 200px;
+    }
+
+.employee-title {
+    font-weight: 500;
+    text-align: center;
+}
+
+@media(min-width: 992px) {
+}
+
+@media(max-width: 991px) {
+    .employees-area {
+        grid-template-columns: 1fr;
+    }
+
+    .about-us-area {
+        flex-direction: column-reverse;
+        align-items: center;
+        margin-top: 5rem;
+    }
+
+    .about-us-text {
+        width: 100%;
+        padding: 1rem;
+        display: grid;
+        place-items: center;
+    }
+}
+
+@media(min-width: 991px) and (max-width: 1650px) {
+    .employees-area {
+        grid-template-columns: 1fr 1fr;
+    }
+}

@@ -1,8 +1,36 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "CC - Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="showcase-container container-fluid">
+    <div class="showcase-content">
+        <img class="shadow" id="concrete-img" src="./images/concrete.jpg" />
+    </div>
+</div>
+
+<div class="bubble-section">
+    <div id="rent-bubble" class="shadow">
+        <h3 class="concrete-consulting-bubble">Concrete Consulting</h3>
+        <h2 class="looking-to-rent">Looking to rent tools?</h2>
+        <p class="take-a-look"><i class="fa-solid fa-arrow-right"></i><a asp-action="Tools" asp-controller="Tools">Take a look here</a></p>
+    </div>
+</div>
+
+<div class="bubble-section">
+    <div id="login-bubble" class="shadow">
+        <h2 class="login-bubble-header">Want to see your current rentals?</h2>
+        <p class="login-bubble-link"><i class="fa-solid fa-arrow-right"></i><a asp-action="Login" asp-controller="Account">Login</a></p>
+    </div>
+</div>
+
+<div class="box-section">
+    <div class="rent-box">
+        <h3 class="concrete-consulting-bubble">Concrete Consulting</h3>
+        <h2 class="looking-to-rent">Looking to rent tools?</h2>
+        <p class="take-a-look"><i class="fa-solid fa-arrow-right"></i><a asp-action="Tools" asp-controller="Tools">Take a look here</a></p>
+    </div>
+    <div class="login-box">
+        <h2 class="login-bubble-header">Want to see your current rentals?</h2>
+        <p class="login-bubble-link"><i class="fa-solid fa-arrow-right"></i><a asp-action="Login" asp-controller="Account">Login</a></p>
+    </div>
 </div>

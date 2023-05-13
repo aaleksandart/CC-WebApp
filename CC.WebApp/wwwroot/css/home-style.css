@@ -1,0 +1,117 @@
+﻿/*HOME PAGE*/
+#concrete-img {
+    max-width: 100%;
+    border-radius: 1rem;
+}
+
+#rent-bubble {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    color: white;
+    position: absolute;
+    top: 12rem;
+    left: 10rem;
+    height: 580px;
+    width: 580px;
+    border-radius: 50%;
+    background-color: #001730;
+}
+
+.concrete-consulting-bubble {
+    font-family: 'Cabin', sans-serif;
+    color: #fe4a49;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.looking-to-rent {
+    font-size: 35px;
+    margin-bottom: 2rem;
+}
+
+.fa-arrow-right {
+    color: #4ad7d1;
+    margin-right: 1rem;
+    font-size: 20px;
+}
+
+.take-a-look {
+    font-size: 17px;
+}
+
+.login-bubble-link {
+    font-size: 17px;
+}
+
+#login-bubble {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    color: white;
+    position: absolute;
+    top: 34rem;
+    left: 32rem;
+    height: 520px;
+    width: 520px;
+    border-radius: 50%;
+    background-color: #ffbd07;
+}
+
+.login-box {
+    background-color: #ffbd07;
+    border-radius: 2rem;
+    padding: 1.5rem;
+    text-align: center;
+    color: white;
+    margin-bottom: 8rem;
+}
+
+.rent-box {
+    background-color: #001730;
+    border-radius: 2rem;
+    padding: 1.5rem;
+    text-align: center;
+    color: white;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+
+@media(min-width: 992px) {
+    .box-section {
+        display: none;
+    }
+}
+
+@media(min-width: 991px) and (max-width: 1650px) {
+    #rent-bubble {
+        height: 450px !important;
+        width: 450px !important;
+        top: 8rem !important;
+        left: 5rem !important;
+    }
+
+    #login-bubble {
+        height: 404px !important;
+        width: 404px !important;
+        top: 25rem !important;
+        left: 22rem !important;
+    }
+}
+
+@media(max-width: 991px) {
+    .bubble-section {
+        display: none;
+    }
+
+    .box-section {
+        display: block;
+    }
+
+    .box-section h2, h3 {
+        font-size: 22px;
+    }
+}
