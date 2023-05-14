@@ -1,0 +1,22 @@
+﻿@model CC.WebApp.ViewModels.Admin.AddEmployeeViewModel
+@{
+    ViewData["Title"] = "CC - Add employee";
+}
+
+@using (Html.BeginForm("Form2", "Home", FormMethod.Post, new { @id = "add-tool-form" }))
+{
+    <div class="employee-form-container">
+        <div class="shadow-lg employee-form">
+            <h3>Add Tool</h3>
+            <div class="mb-4 mt-3 form-part">
+                <div class="">@Html.LabelFor(m => m.EmployeeName, "Tool name") </div>
+                <div class="">@Html.TextBoxFor(m => m.EmployeeName)</div>
+            </div>
+            <div class="mb-4 form-part">
+                <div class="">@Html.LabelFor(m => m.EmployeeRole, "Tool description") </div>
+                <div class="">@Html.TextBoxFor(m => m.EmployeeRole)</div>
+            </div>
+            <a class="btn btn-primary tool-form-btn">Submit</a>
+        </div>
+    </div>
+}

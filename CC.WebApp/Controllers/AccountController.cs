@@ -24,7 +24,7 @@ namespace CC.WebApp.Controllers
             return View();
         }
 
-        public async Task Login(string returnUrl = "/")
+        public async Task Login(string returnUrl = "/Account/LoginCreateUser")
         {
             var authenticationProperties = new LoginAuthenticationPropertiesBuilder()
                 .WithRedirectUri(returnUrl)
@@ -45,8 +45,7 @@ namespace CC.WebApp.Controllers
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
         }
 
-        
-        public async Task<IActionResult> CreateUser()
+        public async Task<bool> CreateUser()
         {
             var emailClaim = User.Claims.Where(c => c.Type == ClaimTypes.Email).Select(c => c.Value).SingleOrDefault();
             var usernameClaim = User.Identity.Name;
@@ -55,16 +54,44 @@ namespace CC.WebApp.Controllers
                 try
                 {
                     var user = new UserModel(emailClaim, emailClaim, usernameClaim);
-                    var success = _userService.AddUser(user);
+                    var success = await _userService.AddUser(user);
                 }
-                catch 
+                catch
                 {
-                    await Logout();
-                    return View("~/Views/Home/Index.cshtml");
+                    return false;
                 }
-                return View("~/Views/Home/Index.cshtml");
+                return true;
             }
-            return View("~/Views/Home/Index.cshtml");
+            else
+                return false;
         }
+
+        public async Task<IActionResult> LoginCreateUser()
+        {
+            var success = await CreateUser();
+            return RedirectToAction("Index", "Home");
+            //return View("~/Views/Home/Index.cshtml");
+        }
+
+        //public async Task<IActionResult> CreateUser()
+        //{
+        //    var emailClaim = User.Claims.Where(c => c.Type == ClaimTypes.Email).Select(c => c.Value).SingleOrDefault();
+        //    var usernameClaim = User.Identity.Name;
+        //    if (emailClaim != null && usernameClaim != null)
+        //    {
+        //        try
+        //        {
+        //            var user = new UserModel(emailClaim, emailClaim, usernameClaim);
+        //            var success = _userService.AddUser(user);
+        //        }
+        //        catch 
+        //        {
+        //            await Logout();
+        //            return View("~/Views/Home/Index.cshtml");
+        //        }
+        //        return View("~/Views/Home/Index.cshtml");
+        //    }
+        //    return View("~/Views/Home/Index.cshtml");
+        //}
     }
 }

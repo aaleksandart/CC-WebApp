@@ -21,5 +21,8 @@ namespace CC.Data.Context
 
         public virtual DbSet<UserEntity> Users { get; set; }
         public virtual DbSet<ToolEntity> Tools { get; set; }
+        public virtual DbSet<RentDataEntity> RentData { get; set; }
+        public virtual DbSet<AvailbilityEntity> Availability { get; set; }
+        public virtual DbSet<EmployeeEntity> Employees { get; set; }
     }
 }

@@ -29,6 +29,14 @@
     }
 </div>
 
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="admin-part">
+        <a asp-action="AddTool" asp-controller="Admin" class="admin-add-buttons">Add Tool</a>
+        <a asp-action="AddEmployee" asp-controller="Admin" class="admin-add-buttons">Add Employee</a>
+    </div>
+}
+
 <div  class="template-sec-header">
     <p>Currently rented tools</p>
 </div>      
