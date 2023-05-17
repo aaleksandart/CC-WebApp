@@ -17,7 +17,6 @@
 <div class="welcome-part">
     <span>Welcome</span>
     @{
-        var a = "";
         if (!string.IsNullOrEmpty(User.Identity.Name))
         {
             <h4>@User.Identity.Name</h4>

@@ -46,6 +46,10 @@ li {
     list-style: none;
 }
 
+small {
+    color: red;
+}
+
 .page-footer {
     position: fixed;
     bottom: 0;

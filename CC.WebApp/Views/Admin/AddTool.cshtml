@@ -2,15 +2,16 @@
 @{
     ViewData["Title"] = "CC - Add tool";
 }
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
 
 <script language="JavaScript" type="text/javascript">
     $("#submit-tool-btn").on("click", function (e) {
         e.preventDefault();
-        console.log("apan");
         $("#add-tool-form").submit();
-    });
+    }
 </script>
-
 
 @using (Html.BeginForm("AddTool", "Admin", FormMethod.Post, new { @id = "add-tool-form"}))
 {
@@ -19,15 +20,15 @@
             <h3>Add Tool</h3>
             <div class="mb-4 mt-3 form-part">
                 <div class="">@Html.LabelFor(m => m.ToolName, "Tool name") </div>
-                <div class="">@Html.TextBoxFor(m => m.ToolName)</div>
+                <div>@Html.EditorFor(m => m.ToolName, new { htmlAttributes = new { @class = "form-control" } })</div>
+                <div class=""><small>@Html.ValidationMessageFor(m => m.ToolName)</small></div>
             </div>
             <div class="mb-4 form-part">
                 <div class="">@Html.LabelFor(m => m.ToolDescription, "Tool description") </div>
-                <div class="">@Html.TextBoxFor(m => m.ToolDescription)</div>
+                <div>@Html.EditorFor(m => m.ToolDescription, new { htmlAttributes = new { @class = "form-control" } })</div>
+                <div class=""><small>@Html.ValidationMessageFor(m => m.ToolDescription)</small></div>
             </div>
             <div>
-                <div class="">@Html.ValidationMessageFor(m => m.ToolName)</div>
-                <div class="">@Html.ValidationMessageFor(m => m.ToolDescription)</div>
                 <div>@TempData["message"]</div>
             </div>
             <button id="submit-tool-btn" class="btn btn-primary tool-form-btn">Submit</button>

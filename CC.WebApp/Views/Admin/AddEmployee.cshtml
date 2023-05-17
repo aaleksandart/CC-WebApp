@@ -2,21 +2,36 @@
 @{
     ViewData["Title"] = "CC - Add employee";
 }
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
 
-@using (Html.BeginForm("Form2", "Home", FormMethod.Post, new { @id = "add-tool-form" }))
+<script language="JavaScript" type="text/javascript">
+    $("#submit-employee-btn").on("click", function (e) {
+        e.preventDefault();
+        $("#add-employee-form").submit();
+    }
+</script>
+
+@using (Html.BeginForm("AddEmployee", "Admin", FormMethod.Post, new { @id = "add-employee-form" }))
 {
     <div class="employee-form-container">
         <div class="shadow-lg employee-form">
-            <h3>Add Tool</h3>
+            <h3>Add Employee</h3>
             <div class="mb-4 mt-3 form-part">
-                <div class="">@Html.LabelFor(m => m.EmployeeName, "Tool name") </div>
-                <div class="">@Html.TextBoxFor(m => m.EmployeeName)</div>
+                <div class="">@Html.LabelFor(m => m.EmployeeName, "Employee name") </div>
+                <div>@Html.EditorFor(m => m.EmployeeName, new { htmlAttributes = new { @class = "form-control" } })</div>
+                <div class=""><small>@Html.ValidationMessageFor(m => m.EmployeeName)</small></div>
             </div>
             <div class="mb-4 form-part">
-                <div class="">@Html.LabelFor(m => m.EmployeeRole, "Tool description") </div>
-                <div class="">@Html.TextBoxFor(m => m.EmployeeRole)</div>
+                <div class="">@Html.LabelFor(m => m.EmployeeRole, "Employee role") </div>
+                <div>@Html.EditorFor(m => m.EmployeeRole, new { htmlAttributes = new { @class = "form-control" } })</div>
+                <div class=""><small>@Html.ValidationMessageFor(m => m.EmployeeRole)</small></div>
             </div>
-            <a class="btn btn-primary tool-form-btn">Submit</a>
+            <div>
+                <div>@TempData["message"]</div>
+            </div>
+            <button id="submit-employee-btn" class="btn btn-primary tool-form-btn">Submit</button>
         </div>
     </div>
 }
