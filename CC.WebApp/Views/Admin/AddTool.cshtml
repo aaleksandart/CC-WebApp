@@ -21,12 +21,12 @@
             <div class="mb-4 mt-3 form-part">
                 <div class="">@Html.LabelFor(m => m.ToolName, "Tool name") </div>
                 <div>@Html.EditorFor(m => m.ToolName, new { htmlAttributes = new { @class = "form-control" } })</div>
-                <div class=""><small>@Html.ValidationMessageFor(m => m.ToolName)</small></div>
+                <div class=""><small class="error-text-small">@Html.ValidationMessageFor(m => m.ToolName)</small></div>
             </div>
             <div class="mb-4 form-part">
                 <div class="">@Html.LabelFor(m => m.ToolDescription, "Tool description") </div>
                 <div>@Html.EditorFor(m => m.ToolDescription, new { htmlAttributes = new { @class = "form-control" } })</div>
-                <div class=""><small>@Html.ValidationMessageFor(m => m.ToolDescription)</small></div>
+                <div class=""><small class="error-text-small">@Html.ValidationMessageFor(m => m.ToolDescription)</small></div>
             </div>
             <div>
                 <div>@TempData["message"]</div>

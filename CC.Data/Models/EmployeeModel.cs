@@ -19,6 +19,14 @@ namespace CC.Data.Models
             Role = role;
         }
 
+        public EmployeeModel(int employeeId, string name, string role)
+        {
+            EmployeeId = employeeId;
+            Name = name;
+            Role = role;
+        }
+
+        public int EmployeeId { get; set; }
         public string Name { get; set; } = string.Empty;
         public string Role { get; set; } = string.Empty;
     }

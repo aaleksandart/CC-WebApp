@@ -10,5 +10,7 @@ namespace CC.Data.Repositories.Interfaces
     public interface IEmployeeRepository
     {
         Task<bool> CreateEmployee(EmployeeEntity entity);
+        Task<EmployeeEntity> GetEmployee(int id);
+        Task<IEnumerable<EmployeeEntity>> GetEmployees();
     }
 }

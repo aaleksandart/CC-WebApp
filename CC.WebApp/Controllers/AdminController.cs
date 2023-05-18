@@ -2,6 +2,7 @@
 using CC.Data.Models;
 using CC.Data.Services.Interfaces;
 using CC.WebApp.ViewModels.Admin;
+using CC.WebApp.ViewModels.Tools;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CC.WebApp.Controllers
@@ -18,23 +19,37 @@ namespace CC.WebApp.Controllers
             _employeeService = employeeService;
         }
 
+        #region Tools
         [HttpGet]
-        public IActionResult AddTool()
+        public async Task<IActionResult> AddTool()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult AddTool(AddToolViewModel viewmodel)
+        public async Task<IActionResult> AddTool(AddToolViewModel viewmodel)
         {
             if (!ModelState.IsValid)
             {
-                TempData["Message"] = "This is my Error";
+                TempData["Message"] = "Input value was not correct.";
                 return View("AddTool", viewmodel);
             }
-            return View("AddTool");
+            try
+            {
+                var model = new ToolModel(viewmodel.ToolName, viewmodel.ToolDescription, Guid.NewGuid());
+                await _toolService.AddTool(model);
+            }
+            catch
+            {
+                TempData["ErrorMessage"] = "Error occured when trying to save employee.";
+                return View("AddTool", viewmodel);
+            }
+            return Redirect("/Admin/AddTool");
         }
 
+        #endregion
+
+        #region Employees
         [HttpGet]
         public IActionResult AddEmployee()
         {
@@ -42,7 +57,7 @@ namespace CC.WebApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddEmployee(AddEmployeeViewModel viewmodel)
+        public async Task<IActionResult> AddEmployee(AddEmployeeViewModel viewmodel)
         {
             TempData["ErrorMessage"] = "";
             if (!ModelState.IsValid)
@@ -52,8 +67,8 @@ namespace CC.WebApp.Controllers
             }
             try
             {
-                var employee = new EmployeeModel(viewmodel.EmployeeName, viewmodel.EmployeeRole);
-                _employeeService.AddEmployee(employee);
+                var model = new EmployeeModel(viewmodel.EmployeeName, viewmodel.EmployeeRole);
+                await _employeeService.AddEmployee(model);
             }
             catch
             {
@@ -63,5 +78,7 @@ namespace CC.WebApp.Controllers
             return Redirect("/Admin/AddEmployee");
                 
         }
+
+        #endregion
     }
 }

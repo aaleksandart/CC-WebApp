@@ -30,5 +30,31 @@ namespace CC.Data.Services
             catch { return false; }
             return true;
         }
+        public async Task<EmployeeModel> GetEmployeeById(int id)
+        {
+            throw new NotImplementedException();
+        }
+        public async Task<IEnumerable<EmployeeModel>> GetAllEmployees()
+        {
+            var models = new List<EmployeeModel>();
+            var entities = (List<EmployeeEntity>)await _repository.GetEmployees();
+            if (entities == null)
+                return models;
+
+            foreach (var entity in entities)
+            {
+                models.Add(MapEntityToModel(entity));
+            }
+            return models;
+        }
+
+        #region Private methods
+        private EmployeeModel MapEntityToModel(EmployeeEntity entity)
+        {
+            var model = new EmployeeModel(entity.EmployeeId, entity.Name,entity.Role);
+            return model;
+        }
+
+        #endregion
     }
 }

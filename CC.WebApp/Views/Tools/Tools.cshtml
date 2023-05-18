@@ -1,4 +1,5 @@
-﻿@{
+﻿@model CC.WebApp.ViewModels.Tools.ToolsViewModel
+@{
     ViewData["Title"] = "CC - Tools";
 }
 
@@ -19,7 +20,20 @@
 </div>
 
 <div class="template-showcase-area">
-    <div class="Tool">
+    @if (Model.Tools != null)
+    {
+        @foreach (var tool in Model.Tools)
+        {
+            <div class="Tool">
+                <p class="template-img-title">@tool.Name</p>
+                <div class="template-img-container">
+                    <img src="~/images/tool.jpg" />
+                    @Html.ActionLink("Details", "ToolDetails", "Tools", new {id=tool.Id}, new { @class="btn tool-details-btn shadow"})
+                </div>
+            </div>
+        }
+    }
+    @*<div class="Tool">
         <p class="template-img-title">Tool</p>
         <div class="template-img-container">
             <img src="~/images/tool.jpg" />
@@ -60,5 +74,5 @@
             <img src="~/images/tool.jpg" />
             @Html.ActionLink("Details", "About", "About", null, new { @class="btn tool-details-btn shadow"})
         </div>
-    </div>
+    </div>*@
 </div>

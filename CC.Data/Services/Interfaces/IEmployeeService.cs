@@ -10,5 +10,7 @@ namespace CC.Data.Services.Interfaces
     public interface IEmployeeService
     {
         Task<bool> AddEmployee(EmployeeModel model);
+        Task<IEnumerable<EmployeeModel>> GetAllEmployees();
+        Task<EmployeeModel> GetEmployeeById(int id);
     }
 }

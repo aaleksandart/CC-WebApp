@@ -19,6 +19,14 @@ namespace CC.Data.Models
             Barcode = barcode;
         }
 
+        public ToolModel(int id, string name, string description, Guid barcode)
+        {
+            Id = id;
+            Name = name;
+            Description = description;
+            Barcode = barcode;
+        }
+
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;

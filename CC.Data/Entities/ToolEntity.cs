@@ -13,6 +13,14 @@ namespace CC.Data.Entities
         public ToolEntity()
         {
         }
+
+        public ToolEntity(string name, string description, Guid barcode)
+        {
+            Name = name;
+            Description = description;
+            Barcode = barcode;
+        }
+
         [Key]
         public int ToolId { get; set; }
         public string Name { get; set; } = string.Empty;

@@ -1,4 +1,5 @@
-﻿@{
+﻿@model CC.WebApp.ViewModels.About.AboutViewModel
+@{
     ViewData["Title"] = "CC - About Us";
 }
 
@@ -26,6 +27,21 @@
 
 <div class="template-showcase-area">
     <div class="employee">
+        <p class="template-img-title">CEO</p>
+        <div class="template-img-container">
+            <img src="~/images/e-berglund-ny.png" />
+        </div>
+    </div>
+    @foreach (var employee in Model.Employees)
+    {
+        <div class="employee">
+            <p class="template-img-title">@employee.Role</p>
+            <div class="template-img-container">
+                <img src="~/images/placeholder-img.png" />
+            </div>
+        </div>
+    }
+    @*<div class="employee">
         <p class="template-img-title">CEO</p>
         <div class="template-img-container">
             <img src="~/images/e-berglund-ny.png" />
@@ -60,5 +76,5 @@
         <div class="template-img-container">
             <img src="~/images/placeholder-img.png" />
         </div>
-    </div>
+    </div>*@
 </div>
