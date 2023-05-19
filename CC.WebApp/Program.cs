@@ -23,6 +23,7 @@ services.AddControllersWithViews();
     services.AddScoped<IToolService, ToolService>();
     services.AddScoped<IEmployeeService, EmployeeService>();
     services.AddScoped<IAvailabilityService, AvailabilityService>();
+    services.AddScoped<IRentDataService, RentDataService>();
     //Repositories
     services.AddScoped<IUserRepository, UserRepository>();
     services.AddScoped<IToolsRepository, ToolsRepository>();

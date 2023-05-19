@@ -7,7 +7,6 @@
     justify-content: center;
     border-radius: 0.5rem!important;
     border: none!important;
-    background-color: #001730!important;
     color: white!important;
     margin-top: 2rem!important;
     font-weight: 500!important;
@@ -34,6 +33,22 @@
 .tool-details-img {
     border: 1px solid black;
 }
+
+.tool-back-btn {
+    background-color: #fe4a49 !important;
+}
+
+    .tool-back-btn:hover {
+        color: #001730 !important;
+    }
+
+.tool-rent-btn {
+    background-color: #001730!important;
+}
+
+    .tool-rent-btn:hover {
+        color: #4ad7d1 !important;
+    }
 
 @media(max-width: 767px) {
     .desktop-card-container {

@@ -31,13 +31,15 @@
                         if (Model.Availability)
                         {
                             <div class="card-rent-btn-container">
-                                <button id="rent-btn" class="btn tool-details-btn shadow">Rent</button>
+                                <button id="rent-btn" class="btn tool-details-btn tool-rent-btn shadow">Rent</button>
+                                @Html.ActionLink("Go back", "Tools", "Tools", null, new { @class="btn tool-details-btn tool-back-btn shadow"})
                             </div>
                         }
                         else
                         {
                             <div class="card-rent-btn-container">
-                                <button id="rent-btn" class="btn tool-details-btn shadow disabled">Not available</button>
+                                <button id="rent-btn" class="btn tool-details-btn tool-rent-btn shadow disabled">Not available</button>
+                                @Html.ActionLink("Go back", "Tools", "Tools", null, new { @class="btn tool-details-btn tool-back-btn shadow"})
                             </div>
                         }
                     }
@@ -70,14 +72,19 @@
                         if (Model.Availability)
                         {
                             <div class="card-rent-btn-container">
-                                <button id="rent-btn" class="btn tool-details-btn shadow">Rent</button>
+                                <button id="rent-btn" class="btn tool-details-btn tool-rent-btn shadow">Rent</button>
+                                @Html.ActionLink("Go back", "Tools", "Tools", null, new { @class="btn tool-details-btn tool-back-btn shadow"})
                             </div>
                         }
                         else
                         {
                             <div class="card-rent-btn-container">
-                                <button id="rent-btn" class="btn tool-details-btn shadow disabled">Not available</button>
+                                <button id="rent-btn" class="btn tool-details-btn tool-rent-btn shadow disabled">Not available</button>
+                                @Html.ActionLink("Go back", "Tools", "Tools", null, new { @class="btn tool-details-btn tool-back-btn shadow"})
                             </div>
+                            //<div class="card-rent-btn-container">
+                            //    <button type="button" id="go-back-btn" class="btn tool-details-btn tool-back-btn shadow">Go back</button>
+                            //</div>
                         }
                     }
                 }

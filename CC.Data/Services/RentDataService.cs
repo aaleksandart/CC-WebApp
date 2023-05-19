@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace CC.Data.Services
 {
-    public class RentDataService
+    public class RentDataService : IRentDataService
     {
         private readonly IRentDataRepository _rentDataRepository;
         public RentDataService(IRentDataRepository rentDataRepository)
@@ -26,6 +26,24 @@ namespace CC.Data.Services
                 modelList.Add(MapEntityToModel(rentdata));
             }
             return modelList;
+        }
+        public async Task<IEnumerable<RentDataModel>> GetCurrentRentData(string email)
+        {
+            var rentdatamodels = new List<RentDataModel>();
+            foreach (var data in await _rentDataRepository.GetFilteredRentData(email, "current"))
+            {
+                rentdatamodels.Add(MapEntityToModel(data));
+            }
+            return rentdatamodels;
+        }
+        public async Task<IEnumerable<RentDataModel>> GetRentHistory(string email)
+        {
+            var rentdatamodels = new List<RentDataModel>();
+            foreach (var data in await _rentDataRepository.GetFilteredRentData(email, "history"))
+            {
+                rentdatamodels.Add(MapEntityToModel(data));
+            }
+            return rentdatamodels;
         }
 
         #region Private methods

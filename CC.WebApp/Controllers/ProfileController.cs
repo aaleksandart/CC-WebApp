@@ -21,9 +21,10 @@ namespace CC.WebApp.Controllers
             viewmodel.Email = User.Claims.Where(c => c.Type == ClaimTypes.Email).Select(c => c.Value).SingleOrDefault() ?? string.Empty;
             if (!string.IsNullOrEmpty(viewmodel.Email))
             {
-                viewmodel.CurrentRentals = await _rentDataService.GetRentDataByEmail(viewmodel.Email);
+                viewmodel.CurrentRentals = await _rentDataService.GetCurrentRentData(viewmodel.Email);
+                viewmodel.RentHistory = await _rentDataService.GetRentDataByEmail(viewmodel.Email);
             }
-            return View();
+            return View(viewmodel);
         }
     }
 }

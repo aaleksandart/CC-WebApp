@@ -14,5 +14,6 @@ namespace CC.Data.Repositories.Interfaces
         Task <bool> UpdateRentData();
         Task<IEnumerable<RentDataEntity>> GetAllRentData();
         Task<IEnumerable<RentDataEntity>> GetRentDataByEmail(string email);
+        Task<IEnumerable<RentDataEntity>> GetFilteredRentData(string email, string filter);
     }
 }

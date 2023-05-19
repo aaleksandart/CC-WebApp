@@ -1,4 +1,5 @@
-﻿@{
+﻿@model CC.WebApp.ViewModels.Profile.ProfileViewModel
+@{
     ViewData["Title"] = "CC - Profile";
 }
 
@@ -30,10 +31,13 @@
 
 @if (User.Identity.IsAuthenticated)
 {
-    <div class="admin-part">
-        <a asp-action="AddTool" asp-controller="Admin" class="admin-add-buttons">Add Tool</a>
-        <a asp-action="AddEmployee" asp-controller="Admin" class="admin-add-buttons">Add Employee</a>
-    </div>
+    if (Model.Email == "aleksstodo@gmail.com")
+    {
+        <div class="admin-part">
+            <a asp-action="AddTool" asp-controller="Admin" class="admin-add-buttons">Add Tool</a>
+            <a asp-action="AddEmployee" asp-controller="Admin" class="admin-add-buttons">Add Employee</a>
+        </div>
+    }
 }
 
 <div  class="template-sec-header">
@@ -41,30 +45,31 @@
 </div>      
 
 <div class="list-group">
-  <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">List group item heading</h5>
-      <small>3 days ago</small>
-    </div>
-    <p class="mb-1">Some placeholder content in a paragraph.</p>
-    <small>And some small print.</small>
-  </a>
-  <a href="#" class="list-group-item list-group-item-action">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">List group item heading</h5>
-      <small class="text-body-secondary">3 days ago</small>
-    </div>
-    <p class="mb-1">Some placeholder content in a paragraph.</p>
-    <small class="text-body-secondary">And some muted small print.</small>
-  </a>
-  <a href="#" class="list-group-item list-group-item-action">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">List group item heading</h5>
-      <small class="text-body-secondary">3 days ago</small>
-    </div>
-    <p class="mb-1">Some placeholder content in a paragraph.</p>
-    <small class="text-body-secondary">And some muted small print.</small>
-  </a>
+    @if (Model.CurrentRentals != null && Model.CurrentRentals.Count() != 0)
+    {
+        @foreach (var data in Model.CurrentRentals)
+        {
+            <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">@data.Tool.Name</h5>
+                <small class="error-text-small">@string.Format("{0} {1} {2}", "Ends in", Math.Round((data.RentEnd - DateTime.Now).TotalDays), "days")</small>
+            </div>
+                <p class="mb-1"><span class="semibold-style">Barcode:</span> @data.Tool.Barcode.ToString()</p>
+                <small>@string.Format("{0} {1} {2} {3}", "Rented from", data.RentStart.ToShortDateString(), "until", data.RentEnd.ToShortDateString())</small>
+            </a>
+        }
+    }
+    else
+    {
+        <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">You are not renting any tools currently.</h5>
+            <small></small>
+        </div>
+            <p class="mb-1"></p>
+        <small></small>
+        </a>
+    }
 </div>
 
 <div  class="template-sec-header">
@@ -72,28 +77,29 @@
 </div>      
 
 <div class="list-group rental-history-group">
-  <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">List group item heading</h5>
-      <small>3 days ago</small>
-    </div>
-    <p class="mb-1">Some placeholder content in a paragraph.</p>
-    <small>And some small print.</small>
-  </a>
-  <a href="#" class="list-group-item list-group-item-action">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">List group item heading</h5>
-      <small class="text-body-secondary">3 days ago</small>
-    </div>
-    <p class="mb-1">Some placeholder content in a paragraph.</p>
-    <small class="text-body-secondary">And some muted small print.</small>
-  </a>
-  <a href="#" class="list-group-item list-group-item-action">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">List group item heading</h5>
-      <small class="text-body-secondary">3 days ago</small>
-    </div>
-    <p class="mb-1">Some placeholder content in a paragraph.</p>
-    <small class="text-body-secondary">And some muted small print.</small>
-  </a>
+    @if (Model.RentHistory != null && Model.RentHistory.Count() != 0)
+    {
+        @foreach (var data in Model.RentHistory)
+        {
+            <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">@data.Tool.Name</h5>
+                    <small class="error-text-small"></small>
+                </div>
+                <p class="mb-1"><span class="semibold-style">Barcode:</span> @data.Tool.Barcode.ToString()</p>
+                <small>@string.Format("{0} {1} {2} {3}", "Rented from", data.RentStart.ToShortDateString(), "until", data.RentEnd.ToShortDateString())</small>
+            </a>
+        }
+    }
+    else
+    {
+        <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">You have not yet rented any tools.</h5>
+                <small></small>
+            </div>
+            <p class="mb-1"></p>
+            <small></small>
+        </a>
+    }
 </div>

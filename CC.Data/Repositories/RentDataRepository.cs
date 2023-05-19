@@ -56,5 +56,18 @@ namespace CC.Data.Repositories
             catch { }
             return rentdata;
         }
+        public async Task<IEnumerable<RentDataEntity>> GetFilteredRentData(string email, string filter)
+        {
+            var rentdata = new List<RentDataEntity>();
+            try
+            {
+                if (filter == "current")
+                    rentdata = await _sql.RentData.Include(rd => rd.User).Include(rd => rd.Tool).Where(rd => rd.User.EmailAddress == email && rd.RentEnd > DateTime.Now).ToListAsync();
+                else if (filter == "history")
+                    rentdata = await _sql.RentData.Include(rd => rd.User).Include(rd => rd.Tool).Where(rd => rd.User.EmailAddress == email && rd.RentEnd < DateTime.Now).ToListAsync();
+            }
+            catch { }
+            return rentdata;
+        }
     }
 }
