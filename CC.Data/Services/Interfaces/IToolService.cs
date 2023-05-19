@@ -15,5 +15,6 @@ namespace CC.Data.Services.Interfaces
         Task<bool> UpdateToolInfo(ToolModel model);
         Task<IEnumerable<ToolModel>> GetAllTools();
         Task<ToolModel> GetToolById(int id);
+        Task<bool> RentTool(int toolId, string email);
     }
 }

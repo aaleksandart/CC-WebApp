@@ -40,16 +40,15 @@ namespace CC.Data.Repositories
             catch { return user; }
             return user;
         }
-        public async Task<bool> GetUserByEmail(string email)
+        public async Task<UserEntity> GetUserByEmail(string email)
         {
+            var entity = new UserEntity();
             try
             {
-                var exists = await _sql.Users.Where(u => u.EmailAddress == email).FirstOrDefaultAsync();
-                if (exists == null)
-                    return false;
+                entity = await _sql.Users.Where(u => u.EmailAddress == email).FirstOrDefaultAsync();
             }
             catch {  }
-            return true;
+            return entity;
         }
         public async Task<IEnumerable<UserEntity>> GetUsers()
         {

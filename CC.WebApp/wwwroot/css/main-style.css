@@ -112,6 +112,13 @@ li {
 }
 
 @media(max-width: 991px) {
+    .collapse {
+        z-index: 9999!important;
+    }
+
+    .navbar-collapse {
+        z-index: 9999!important;
+    }
     .navbar-nav {
         background-color: #001730;
         border-radius: 1rem;

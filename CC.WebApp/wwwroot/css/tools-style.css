@@ -44,6 +44,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        width: 80%;
     }
 }
 
@@ -53,6 +54,10 @@
         align-items: center;
         justify-content: center;
         margin-top: 4rem;
+    }
+
+    .desktop-card-container .card {
+        max-width: 80%;
     }
 
     .mobile-card-container {

@@ -15,13 +15,20 @@ var config = builder.Configuration;
 
 // Add services to the container.
 services.AddControllersWithViews();
-services.AddDbContext<SqlContext>(context => context.UseSqlServer(config.GetConnectionString("SQL")));
-services.AddScoped<IUserService, UserService>();
-services.AddScoped<IToolService, ToolService>();
-services.AddScoped<IEmployeeService, EmployeeService>();
-services.AddScoped<IUserRepository, UserRepository>();
-services.AddScoped<IToolsRepository, ToolsRepository>();
-services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+
+    //DB Context
+    services.AddDbContext<SqlContext>(context => context.UseSqlServer(config.GetConnectionString("SQL")));
+    //Services
+    services.AddScoped<IUserService, UserService>();
+    services.AddScoped<IToolService, ToolService>();
+    services.AddScoped<IEmployeeService, EmployeeService>();
+    services.AddScoped<IAvailabilityService, AvailabilityService>();
+    //Repositories
+    services.AddScoped<IUserRepository, UserRepository>();
+    services.AddScoped<IToolsRepository, ToolsRepository>();
+    services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+    services.AddScoped<IAvailabilityRepository, AvailabilityRepository>();
+    services.AddScoped<IRentDataRepository, RentDataRepository>();
 
 // Add Auth0 Authentication
 services.AddAuth0WebAppAuthentication(options =>

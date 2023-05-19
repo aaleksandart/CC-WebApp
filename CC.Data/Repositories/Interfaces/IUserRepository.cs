@@ -12,7 +12,7 @@ namespace CC.Data.Repositories.Interfaces
     {
         Task<bool> CreateUser(UserEntity user);
         Task<UserEntity> GetUser(int id);
-        Task<bool> GetUserByEmail(string email);
+        Task<UserEntity> GetUserByEmail(string email);
         Task<IEnumerable<UserEntity>> GetUsers();
         Task<bool> UpdateUser(int id, UserEntity user);
         Task<bool> DeleteUser(int id);

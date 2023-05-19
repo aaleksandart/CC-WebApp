@@ -63,7 +63,10 @@ namespace CC.Data.Services
 
         private async Task<bool> CheckUserExist(string email)
         {
-            return await _userRepository.GetUserByEmail(email);
+            var exist = await _userRepository.GetUserByEmail(email);
+            if (exist != null)
+                return true;
+            return false;
         }
         #endregion
     }
