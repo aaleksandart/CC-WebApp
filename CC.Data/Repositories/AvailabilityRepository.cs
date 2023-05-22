@@ -57,7 +57,7 @@ namespace CC.Data.Repositories
                 if (entity == null)
                     return false;
 
-                _sql.Update(entity);
+                var updated = _sql.Availability.Update(entity);
                 await _sql.SaveChangesAsync();
             }
             catch

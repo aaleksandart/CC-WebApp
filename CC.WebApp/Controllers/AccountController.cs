@@ -69,29 +69,10 @@ namespace CC.WebApp.Controllers
         public async Task<IActionResult> LoginCreateUser()
         {
             var success = await CreateUser();
-            return RedirectToAction("Index", "Home");
-            //return View("~/Views/Home/Index.cshtml");
+            if (success && User.Identity.IsAuthenticated)
+                return RedirectToAction("Profile", "Profile");
+            else
+                return RedirectToAction("Index", "Home");
         }
-
-        //public async Task<IActionResult> CreateUser()
-        //{
-        //    var emailClaim = User.Claims.Where(c => c.Type == ClaimTypes.Email).Select(c => c.Value).SingleOrDefault();
-        //    var usernameClaim = User.Identity.Name;
-        //    if (emailClaim != null && usernameClaim != null)
-        //    {
-        //        try
-        //        {
-        //            var user = new UserModel(emailClaim, emailClaim, usernameClaim);
-        //            var success = _userService.AddUser(user);
-        //        }
-        //        catch 
-        //        {
-        //            await Logout();
-        //            return View("~/Views/Home/Index.cshtml");
-        //        }
-        //        return View("~/Views/Home/Index.cshtml");
-        //    }
-        //    return View("~/Views/Home/Index.cshtml");
-        //}
     }
 }

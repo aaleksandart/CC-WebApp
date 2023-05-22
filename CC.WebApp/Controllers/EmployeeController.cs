@@ -16,14 +16,6 @@ namespace CC.WebApp.Controllers
         }
         public IActionResult Index()
         {
-            //var viewmodel = new EmployeeViewModel();
-            //var employees = await _employeeService.
-            //if (employees != null)
-            //    viewmodel.Tools = employees;
-            //else
-            //    viewmodel.Tools = new List<ToolModel>();
-
-            //return View(viewmodel);
             return View();
         }
     }

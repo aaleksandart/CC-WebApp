@@ -2,6 +2,7 @@
 using CC.Data.Services;
 using CC.Data.Services.Interfaces;
 using CC.WebApp.ViewModels.Profile;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
@@ -14,6 +15,8 @@ namespace CC.WebApp.Controllers
         {
             _rentDataService = rentDataService;
         }
+
+        [Authorize]
         public async Task<IActionResult> Profile()
         {
             var viewmodel = new ProfileViewModel();

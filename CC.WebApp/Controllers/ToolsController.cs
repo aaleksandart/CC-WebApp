@@ -1,6 +1,7 @@
 ﻿using CC.Data.Models;
 using CC.Data.Services.Interfaces;
 using CC.WebApp.ViewModels.Tools;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
@@ -36,15 +37,19 @@ namespace CC.WebApp.Controllers
             var viewmodel = new ToolDetailsViewModel();
             viewmodel.ToolId = id;
             var availability = await _availabilityService.GetAvailability(id);
+            var tool = await _toolService.GetToolById(id);
+            if (tool != null)
+                viewmodel.ToolName = tool.Name ?? string.Empty;
             if (availability)
                 viewmodel.Availability = true;
+
             
             return View(viewmodel);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> ToolDetails(ToolDetailsViewModel viewmodel)
-        
         {
             TempData["SuccessMessage"] = "";
             var userEmail = User.Claims.Where(c => c.Type == ClaimTypes.Email).Select(c => c.Value).SingleOrDefault();
@@ -58,13 +63,14 @@ namespace CC.WebApp.Controllers
                 var success = await _toolService.RentTool(viewmodel.ToolId, userEmail);
                 if (success)
                 {
+                    viewmodel.Availability = await _availabilityService.GetAvailability(viewmodel.ToolId);
                     TempData["SuccessMessage"] = "Successfully booked tool.";
-                    return View("ToolDetails");
+                    return View("ToolDetails", viewmodel);
                 }
             }
             catch { }
             TempData["SuccessMessage"] = "Error occured when trying to complete booking of tool.";
-            return View("ToolDetails");
+            return View("ToolDetails", viewmodel);
         }
     }
 }

@@ -4,6 +4,6 @@ namespace CC.WebApp.ViewModels.Tools
 {
     public class ToolsViewModel
     {
-        public IEnumerable<ToolModel> Tools { get; set; }
+        public IEnumerable<ToolModel> Tools { get; set; } = new List<ToolModel>();
     }
 }

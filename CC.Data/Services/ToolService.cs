@@ -58,9 +58,13 @@ namespace CC.Data.Services
             return models;
         }
 
-        public Task<ToolModel> GetToolById(int id)
+        public async Task<ToolModel> GetToolById(int id)
         {
-            throw new NotImplementedException();
+            var model = new ToolModel();
+            var entity = await _toolRepository.GetTool(id);
+            if (entity != null)
+                model = MapEntityToModel(entity);
+            return model;
         }
 
         public Task<bool> UpdateToolInfo(ToolModel model)
@@ -74,7 +78,7 @@ namespace CC.Data.Services
             {
                 var tool = await _toolRepository.GetTool(toolId);
                 var user = await _userRepository.GetUserByEmail(email);
-                var available = _availabilityRepository.GetAvailability(toolId);
+                var available = await _availabilityRepository.GetAvailability(toolId);
                 var date = DateTime.Now;
                 if (available == null || available.Status == 0)
                     return false;

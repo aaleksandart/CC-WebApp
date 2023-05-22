@@ -3,6 +3,7 @@ using CC.Data.Models;
 using CC.Data.Services.Interfaces;
 using CC.WebApp.ViewModels.Admin;
 using CC.WebApp.ViewModels.Tools;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CC.WebApp.Controllers
@@ -20,12 +21,15 @@ namespace CC.WebApp.Controllers
         }
 
         #region Tools
+
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> AddTool()
         {
             return View();
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> AddTool(AddToolViewModel viewmodel)
         {
@@ -50,12 +54,15 @@ namespace CC.WebApp.Controllers
         #endregion
 
         #region Employees
+
+        [Authorize]
         [HttpGet]
         public IActionResult AddEmployee()
         {
             return View();
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> AddEmployee(AddEmployeeViewModel viewmodel)
         {

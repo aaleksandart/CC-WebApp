@@ -19,7 +19,14 @@
 <div class="bubble-section">
     <div id="login-bubble" class="shadow">
         <h2 class="login-bubble-header">Want to see your current rentals?</h2>
-        <p class="login-bubble-link"><i class="fa-solid fa-arrow-right"></i><a asp-action="Login" asp-controller="Account">Login</a></p>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <p class="login-bubble-link"><i class="fa-solid fa-arrow-right"></i><a asp-action="Profile" asp-controller="Profile">My tools</a></p>
+        }
+        else
+        {
+            <p class="login-bubble-link"><i class="fa-solid fa-arrow-right"></i><a asp-action="Login" asp-controller="Account">Login</a></p>
+        }
     </div>
 </div>
 
@@ -31,6 +38,13 @@
     </div>
     <div class="login-box">
         <h2 class="login-bubble-header">Want to see your current rentals?</h2>
-        <p class="login-bubble-link"><i class="fa-solid fa-arrow-right"></i><a asp-action="Login" asp-controller="Account">Login</a></p>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <p class="login-bubble-link"><i class="fa-solid fa-arrow-right"></i><a asp-action="Profile" asp-controller="Profile">My tools</a></p>
+        }
+        else
+        {
+            <p class="login-bubble-link"><i class="fa-solid fa-arrow-right"></i><a asp-action="Login" asp-controller="Account">Login</a></p>
+        }
     </div>
 </div>

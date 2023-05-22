@@ -21,13 +21,15 @@
         <div class="card shadow-lg mobile-card">
             <img class="card-image-top" src="~/images/tool.jpg" alt="toolpicture"/>
             <div class="card-body shadow-lg">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">@Model.ToolName</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 @if (User.Identity.IsAuthenticated)
                 {
                     @using (Html.BeginForm("ToolDetails", "Tools", FormMethod.Post, new { @id = "rent-form" }))
                     {
                         @Html.HiddenFor(m => m.ToolId)
+                        @Html.HiddenFor(m => m.Availability)
+                        @Html.HiddenFor(m => m.ToolName)
                         if (Model.Availability)
                         {
                             <div class="card-rent-btn-container">
@@ -43,6 +45,12 @@
                             </div>
                         }
                     }
+                }
+                else
+                {
+                    <div class="card-rent-btn-container">
+                        @Html.ActionLink("Go back", "Tools", "Tools", null, new { @class="btn tool-details-btn tool-back-btn shadow"})
+                    </div>
                 }
             </div>
         </div>
@@ -57,7 +65,7 @@
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
+                    <h5 class="card-title">@Model.ToolName</h5>
                             <p class="card-text">
                                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br />Quibusdam molestiae hic ad dolores illo, assumenda maxime error et explicabo! <br />Voluptates ducimus quis incidunt et assumenda accusantium quo dolorum,<br/> nam voluptate!
                                 Lorem ipsum dolo        r sit amet consectetur adipisicing elit. <br /> Quod explicabo, deleniti ex aut ea deserunt perspiciatis<br /> itaque accusantium iusto eligendi ips a laboriosam harum error officia<br/> voluptatum quae veniam. Itaque, voluptat
@@ -69,6 +77,8 @@
                     @using (Html.BeginForm("ToolDetails", "Tools", FormMethod.Post, new { @id = "rent-form" }))
                     {
                         @Html.HiddenFor(m => m.ToolId)
+                        @Html.HiddenFor(m => m.Availability)
+                        @Html.HiddenFor(m => m.ToolName)
                         if (Model.Availability)
                         {
                             <div class="card-rent-btn-container">
@@ -82,53 +92,17 @@
                                 <button id="rent-btn" class="btn tool-details-btn tool-rent-btn shadow disabled">Not available</button>
                                 @Html.ActionLink("Go back", "Tools", "Tools", null, new { @class="btn tool-details-btn tool-back-btn shadow"})
                             </div>
-                            //<div class="card-rent-btn-container">
-                            //    <button type="button" id="go-back-btn" class="btn tool-details-btn tool-back-btn shadow">Go back</button>
-                            //</div>
                         }
                     }
                 }
-                
+                else
+                {
+                    <div class="card-rent-btn-container">
+                        @Html.ActionLink("Go back", "Tools", "Tools", null, new { @class="btn tool-details-btn tool-back-btn shadow"})
+                    </div>
+                }
+
             </div>
         </div>
     </div>
 </div>
-
-
-@*Mobile*@
-@*<div class="mobile-card-container">
-    <div class="card shadow-lg mobile-card">
-        <img class="card-image-top" src="~/images/tool.jpg" alt="toolpicture" />
-        <div class="card-body shadow-lg">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <div class="card-rent-btn-container">
-                @Html.ActionLink("Details", "ToolDetails", "Tools", null, new { @class="btn tool-details-btn shadow"})
-            </div>
-        </div>
-    </div>
-</div>*@
-
-@*Ipad or desktop*@
-@*<div class="desktop-card-container">
-    <div class="card shadow-lg">
-        <div class="row g-0 p-3">
-            <div class="col-md-4">
-                <img class="img-fluid rounded-start tool-details-img" src="~/images/tool.jpg" alt="toolpicture" />
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br />Quibusdam molestiae hic ad dolores illo, assumenda maxime error et explicabo! <br />Voluptates ducimus quis incidunt et assumenda accusantium quo dolorum,<br /> nam voluptate!
-                        Lorem ipsum dolo        r sit amet consectetur adipisicing elit. <br /> Quod explicabo, deleniti ex aut ea deserunt perspiciatis<br /> itaque accusantium iusto eligendi ips a laboriosam harum error officia<br /> voluptatum quae veniam. Itaque, voluptat
-                        ibus.
-                    </p>
-                </div>
-            </div>
-            <div class="card-rent-btn-container">
-                @Html.ActionLink("Details", "ToolDetails", "Tools", null, new { @class="btn tool-details-btn shadow"})
-            </div>
-        </div>
-    </div>
-</div>*@
